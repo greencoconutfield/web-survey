@@ -1,0 +1,4 @@
+renderType: freemarker
+templateScript: /survey-website/templates/components/login.ftl
+dialog: public-user-registration:login
+name: login

@@ -1,0 +1,4 @@
+title: image
+renderType: freemarker
+templateScript: /survey-website/templates/components/image.ftl
+dialog: survey-website:components/image

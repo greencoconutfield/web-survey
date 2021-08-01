@@ -1,0 +1,4 @@
+title: summary-form
+renderType: freemarker
+templateScript: /survey-website/templates/components/summary-form.ftl
+dialog: survey-website:components/summary-form

@@ -1,0 +1,293 @@
+icon: icon-jcr-app
+label: KSA
+class: info.magnolia.ui.contentapp.configuration.ContentAppDescriptor
+appClass: info.magnolia.ui.framework.app.BaseApp
+permissions:
+  roles:
+    superuser: superuser
+subApps:
+  browser:
+    class: info.magnolia.ui.contentapp.configuration.BrowserDescriptor
+    subAppClass: info.magnolia.jcrbrowser.app.view.JcrBrowserSubApp
+    datasource:
+      name: jcr-browser
+      $type: jcrDatasource
+      workspace: ksa
+      includeProperties: true
+    actions:
+      addFolder:
+        $type: addNodeAction
+        icon: icon-add-folder
+        nodeType: mgnl:content
+        availability:
+          nodeTypes:
+            content: mgnl:content
+          root: true
+      addNode:
+        icon: icon-add-node-content
+        $type: openDialogAction
+        dialogId: jcr-browser:addNode
+        availability:
+          root: true
+          nodes: true
+          properties: false
+      addProperty:
+        class: info.magnolia.jcrbrowser.app.action.AddPropertyActionDefinition
+        icon: icon-add-node-data
+        availability:
+          nodes: true
+      duplicate:
+        $type: duplicateNodeAction
+        icon: icon-duplicate
+        availability:
+          multiple: true
+          properties: false
+          writePermissionRequired: true
+          rules:
+            notDeleted: &notDeleted
+              $type: jcrIsDeletedRule
+              negate: true
+      confirmDeletion:
+        icon: icon-delete
+        $type: confirmationAction
+        successActionName: delete
+        availability:
+          multiple: true
+          properties: true
+          writePermissionRequired: true
+          rules:
+            notDeleted: *notDeleted
+            notSystemProperty: &notSystemProperty
+              $type: isSystemPropertyRule
+              negate: true
+      rename:
+        $type: openDialogAction
+        dialogId: jcr-browser:rename
+        icon: icon-edit
+        availability:
+          properties: true
+          nodes: true
+      editProperty:
+        $type: openDialogAction
+        dialogId: jcr-browser:editProperty
+        icon: icon-edit
+        availability:
+          properties: true
+          nodes: false
+          rules:
+            notSystemProperty: *notSystemProperty
+      publish:
+        icon: icon-publish
+        $type: jcrCommandAction
+        command: publish
+        availability:
+          rules:
+            notDeleted: *notDeleted
+            isPublishable: &isPublishable
+              $type: jcrPublishableRule
+              name: isPublishable
+      publishRecursive:
+        icon: icon-publish-incl-sub
+        asynchronous: true
+        $type: jcrCommandAction
+        command: publish
+        params:
+          recursive: true
+        availability:
+          rules:
+            notDeleted: *notDeleted
+            isPublishable: *isPublishable
+            hasSubNodes:
+              $type: jcrHasChildrenRule
+              name: hasSubNodes
+      unpublish:
+        icon: icon-unpublish
+        $type: jcrCommandAction
+        command: unpublish
+        availability:
+          rules:
+            notDeleted: *notDeleted
+            isPublished:
+              $type: jcrPublishedRule
+              name: isPublished
+      export:
+        icon: icon-export
+        $type: exportAction
+        availability:
+          rules:
+            notDeleted: *notDeleted
+      import:
+        icon: icon-import
+        $type: openDialogAction
+        dialogId: ui-framework-jcr:import
+        availability:
+          root: true
+          rules:
+            notDeleted: *notDeleted
+      delete:
+        $type: jcrCommandAction
+        asynchronous: true
+        command: delete
+        availability:
+          rules:
+            notDeleted: *notDeleted
+            notSystemProperty: *notSystemProperty
+      move:
+        icon: icon-move
+        $type: moveAction
+        availability:
+          multiple: true
+          properties: true
+          writePermissionRequired: true
+          rules:
+            notDeleted: *notDeleted
+      copy:
+        icon: icon-copy
+        $type: copyContentAction
+        availability:
+          multiple: true
+          properties: true
+          writePermissionRequired: true
+          rules:
+            notDeleted: *notDeleted
+      paste:
+        icon: icon-paste
+        $type: pasteContentAction
+        availability:
+          root: true
+          rules:
+            canPasteRule:
+              $type: canPasteContentRule
+              name: canPasteRule
+            notDeleted: *notDeleted
+
+    actionbar:
+      deleteAction: confirmDeletion
+      sections:
+        - name: nodes
+          availability:
+            nodes: true
+            properties: false
+          groups:
+            - name: addingActions
+              items:
+                - name: addNode
+                - name: addProperty
+                - name: confirmDeletion
+            - name: editActions
+              items:
+                - name: rename
+                - name: duplicate
+                - name: move
+                - name: copy
+                - name: paste
+            - name: publishActions
+              items:
+                - name: publish
+                - name: publishRecursive
+                - name: unpublish
+            - name: importExportActions
+              items:
+                - name: export
+                - name: import
+        - name: properties
+          availability:
+            nodes: false
+            properties: true
+            rules:
+              notSystemProperty: *notSystemProperty
+          groups:
+            - name: addingActions
+              items:
+                - name: confirmDeletion
+            - name: editActions
+              items:
+                - name: editProperty
+                - name: rename
+                - name: duplicate
+                - name: move
+                - name: copy
+                - name: paste
+        - name: root
+          availability:
+            nodes: false
+            root: true
+          groups:
+            - name: addingActions
+              items:
+                - name: addNode
+                - name: addProperty
+                - name: confirmDeletion
+            - name: importExportActions
+              items:
+                - name: export
+                - name: import
+        - name: multiple
+          availability:
+            multiple: true
+            nodes: false
+          groups:
+            - name: addingActions
+              items:
+                - name: confirmDeletion
+            - name: editActions
+              items:
+                - name: duplicate
+                - name: move
+                - name: copy
+                - name: paste
+            - name: publishActions
+              items:
+                - name: publish
+                - name: publishRecursive
+                - name: unpublish
+    workbench:
+      implementationClass: info.magnolia.jcrbrowser.app.view.JcrBrowserWorkbench
+      extensionViews:
+        - name: workspaceSelector
+          view:
+            name: workspaceSelector
+            class: info.magnolia.jcrbrowser.app.extension.WorkspaceSelectorViewDefinition
+        - name: systemPropertyToggle
+          icon: icon-search-result-filters
+          view:
+            name: systemPropertyToggle
+            class: info.magnolia.jcrbrowser.app.extension.SystemPropertiesToggleViewDefinition
+      contentViews:
+        - name: tree
+          multiSelect: true
+          $type: treeView
+          columns:
+            jcrName:
+              $type: jcrTitleColumn
+              editable: true
+              editor:
+                $type: textField
+                availability:
+                  properties: true
+                  rules:
+                    notSystemProperty: *notSystemProperty
+              nodeTypeToIcon:
+                mgnl:content: icon-folder-l
+                mgnl:folder: icon-folder-l
+                nt:base: icon-node-content
+            value:
+              filterComponent:
+                $type: textField
+              editor:
+                $type: textField
+                availability:
+                  nodes: false
+                  properties: true
+                  rules:
+                    notSystemProperty: *notSystemProperty
+              editable: true
+            type:
+              $type: jcrTypeColumn
+            jcrPublishingStatus:
+              $type: jcrStatusColumn
+              width: 130
+            mgnl:lastModified:
+              $type: dateColumn
+              editable: false
+              width: 200

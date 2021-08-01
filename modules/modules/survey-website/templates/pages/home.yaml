@@ -1,0 +1,17 @@
+title: KSA - HOME
+templateScript: /survey-website/templates/pages/home.ftl
+renderType: freemarker
+dialog: survey-website:pages/home
+visible: true
+
+areas:
+  main:
+    type: list
+    # templateScript: /survey-website/templates/pages/areas/tab1.ftl
+    availableComponents: 
+      layout57:
+        id: survey-website:components/layout57
+      layout444:
+        id: survey-website:components/layout444
+      login:
+        id: public-user-registration:components/login

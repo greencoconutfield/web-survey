@@ -1,0 +1,29 @@
+# Automatically generated dialog with few most often used fileds (text, right, link, DAM image, multivalue, link to app, select). Feel free to modify them for your specific component.
+
+form:
+  label: layout57
+  tabs:
+    - name: tabMain
+      label: Main
+      fields:
+        - name: hide 
+          label: Hide area
+          type: Boolean
+          class: info.magnolia.ui.form.field.definition.CheckboxFieldDefinition
+          defaultValue: false        
+        - name: video
+          label: "Video from Assets"
+          description: "Select an asset"
+          appName: assets
+          targetWorkspace: dam
+          class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
+          identifierToPathConverter:
+            class: info.magnolia.dam.app.assets.field.translator.AssetCompositeIdKeyTranslator
+          contentPreviewDefinition:
+            contentPreviewClass: info.magnolia.dam.app.ui.field.DamFilePreviewComponent
+
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

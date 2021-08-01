@@ -1,0 +1,18 @@
+title: KSA - BASIC 1
+templateScript: /survey-website/templates/pages/basic-1.ftl
+renderType: freemarker
+dialog: survey-website:pages/basic-1
+visible: true
+
+areas:
+  tab1:
+    type: list
+    # templateScript: /survey-website/templates/pages/areas/tab1.ftl
+    availableComponents: 
+      layout57:
+        id: survey-website:components/layout57
+      layout444:
+        id: survey-website:components/layout444
+      buttonGroup:
+        id: survey-website:components/buttonGroup
+

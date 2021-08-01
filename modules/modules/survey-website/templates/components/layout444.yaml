@@ -1,0 +1,19 @@
+title: KSA - lAYOUT 4-4-4
+renderType: freemarker
+templateScript: /survey-website/templates/components/layout444.ftl
+dialog: survey-website:components/layout444
+
+areas:
+  layout444-1:
+    type: noComponent
+    templateScript: /survey-website/templates/components/areas/layout444-1.ftl
+    dialog: survey-website:components/areas/layout444-1
+  layout444-2:
+    type: noComponent
+    templateScript: /survey-website/templates/components/areas/layout444-1.ftl
+    dialog: survey-website:components/areas/layout444-1
+  layout444-3:
+    type: noComponent
+    templateScript: /survey-website/templates/components/areas/layout444-1.ftl
+    dialog: survey-website:components/areas/layout444-1
+   

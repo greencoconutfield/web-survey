@@ -1,0 +1,27 @@
+# Automatically generated dialog with few most often used fileds (text, right, link, DAM image, multivalue, link to app, select). Feel free to modify them for your specific component.
+
+form:
+  label: LAYOUT 5-7
+  tabs:
+    - name: tabMain
+      label: Main
+      fields:
+        - name: heading
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          label: Heading
+        
+        - name: showFull
+          fieldType: checkbox
+          label: Show full
+          buttonLabel: Select to show full.
+        
+        - name: desc
+          class: info.magnolia.ui.form.field.definition.RichTextFieldDefinition
+          label: Description in case show full
+          
+
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

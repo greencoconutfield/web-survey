@@ -1,0 +1,4 @@
+title: BUTTON GROUP
+renderType: freemarker
+templateScript: /survey-website/templates/components/buttonGroup.ftl
+dialog: survey-website:components/buttonGroup

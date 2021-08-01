@@ -1,0 +1,18 @@
+# Automatically generated dialog with few most often used fileds (text, right, link, DAM image, multivalue, link to app, select). Feel free to modify them for your specific component.
+
+form:
+  label: layout57
+  tabs:
+    - name: tabMain
+      label: Main
+      fields:
+        - name: desc
+          class: info.magnolia.ui.form.field.definition.RichTextFieldDefinition
+          label: Description
+          fontSizes: 12/12px;14/14px;16/16px;24/24px;48/48px
+
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

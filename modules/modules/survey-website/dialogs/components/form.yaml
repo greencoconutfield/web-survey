@@ -1,0 +1,62 @@
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition
+form:
+  tabs:
+    tabMain:
+      name: tabMain
+      fields:
+        formTitle:
+          i18n: true
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          name: formTitle
+        formName:
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          name: formName
+        formText:
+          rows: 2
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          i18n: true
+          name: formText
+        requiredSymbol:
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          name: requiredSymbol
+        rightText:
+          i18n: true
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          name: rightText
+        displayStepNavigation:
+          type: Boolean
+          class: info.magnolia.ui.form.field.definition.CheckboxFieldDefinition
+          defaultValue: false
+          name: displayStepNavigation
+    tabSubmit:
+      name: tabSubmit
+      fields:
+        errorTitle:
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          i18n: true
+          name: errorTitle
+        successTitle:
+          i18n: true
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          name: successTitle
+        successMessage:
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          i18n: true
+          name: successMessage
+        redirect:
+          type: String
+          class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
+          targetWorkspace: website
+          appName: pages
+          name: redirect
+          identifierToPathConverter:
+            class: info.magnolia.ui.form.field.converter.BaseIdentifierToPathConverter
+        trackMail:
+          type: Boolean
+          class: info.magnolia.ui.form.field.definition.CheckboxFieldDefinition
+          defaultValue: false
+          name: trackMail

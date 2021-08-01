@@ -1,0 +1,5 @@
+
+dialog: survey-website:components/form
+templateScript: /survey-website/templates/components/registration-form.ftl
+
+

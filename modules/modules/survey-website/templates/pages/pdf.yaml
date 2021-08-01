@@ -1,0 +1,6 @@
+title: pdf
+templateScript: /survey-website/templates/pages/pdf.ftl
+renderType: freemarker
+dialog: survey-website:pages/pdf
+visible: true
+

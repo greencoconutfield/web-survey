@@ -1,0 +1,34 @@
+# Automatically generated dialog with few most often used fileds (text, right, link, DAM image, multivalue, link to app, select). Feel free to modify them for your specific component.
+
+form:
+  label: BUTTON GROUP
+  tabs:
+    - name: tabMain
+      label: Main
+      fields:
+
+        - name: nextPage
+          class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
+          targetWorkspace: website
+          appName: pages
+          label: Select next page
+          identifierToPathConverter:
+            class: info.magnolia.ui.form.field.converter.BaseIdentifierToPathConverter
+        
+        - name: previousPage
+          class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
+          targetWorkspace: website
+          appName: pages
+          label: Select previous page
+          identifierToPathConverter:
+            class: info.magnolia.ui.form.field.converter.BaseIdentifierToPathConverter
+
+        - name: sendSubmit
+          fieldType: checkbox
+          label: Send Submit
+          buttonLabel: Select to submit the form
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

@@ -1,0 +1,38 @@
+title: page-form
+templateScript: /survey-website/templates/pages/page-form.ftl
+renderType: freemarker
+dialog: survey-website:pages/page-form
+visible: true
+
+areas:
+  main:
+    type: list
+    # templateScript: /survey-website/templates/pages/areas/tab1.ftl
+    availableComponents: 
+      simple-form:
+        id: survey-website:components/simple-form
+      q1-form:
+        id: survey-website:components/q1-form
+      q2-form:
+        id: survey-website:components/q2-form
+      q3-form:
+        id: survey-website:components/q3-form
+      q4-form:
+        id: survey-website:components/q4-form
+      q5-form:
+        id: survey-website:components/q5-form
+      q6-form:
+        id: survey-website:components/q6-form
+      q78-form:
+        id: survey-website:components/q78-form
+      generator-form:
+        id: survey-website:components/generator-form
+      generator-pdf-form:
+        id: survey-website:components/generator-pdf-form
+      impact-form:
+        id: survey-website:components/impact-form
+      impact-most-form:
+        id: survey-website:components/impact-most-form
+      summary-form:
+        id: survey-website:components/summary-form
+

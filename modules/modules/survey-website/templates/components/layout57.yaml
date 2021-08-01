@@ -1,0 +1,29 @@
+title: KSA - lAYOUT 5-7
+renderType: freemarker
+templateScript: /survey-website/templates/components/layout57.ftl
+dialog: survey-website:components/layout57
+
+areas:
+  layout57-1:
+    type: noComponent
+    templateScript: /survey-website/templates/components/areas/layout57-1.ftl
+    dialog: survey-website:components/areas/layout57-1
+  layout57-2:
+    type: noComponent
+    templateScript: /survey-website/templates/components/areas/layout57-2.ftl
+    dialog: survey-website:components/areas/layout57-2
+    areas:
+      layout57-3:
+        type: noComponent
+        templateScript: /survey-website/templates/components/areas/layout57-3.ftl
+        dialog: survey-website:components/areas/layout57-3
+      layout57-4:
+        type: noComponent
+        templateScript: /survey-website/templates/components/areas/layout57-4.ftl
+        dialog: survey-website:components/areas/layout57-4
+      layout57-5:
+        type: list
+        templateScript: /survey-website/templates/components/areas/layout57-5.ftl
+        availableComponents:
+          form:
+            id: survey-website:components/challenges-form
